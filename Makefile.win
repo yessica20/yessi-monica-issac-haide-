@@ -1,0 +1,35 @@
+# Project: Proyecto 1
+# Makefile created by Dev-C++ 5.3.0.4
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = funcDatos.o segundointento1.o promAlu.o $(RES)
+LINKOBJ  = funcDatos.o segundointento1.o promAlu.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+BIN      = "Primer intento.exe"
+CXXFLAGS = $(CXXINCS)  -g3
+CFLAGS   = $(INCS)  -g3
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+funcDatos.o: funcDatos.cpp
+	$(CPP) -c funcDatos.cpp -o funcDatos.o $(CXXFLAGS)
+
+segundointento1.o: segundointento1.c
+	$(CPP) -c segundointento1.c -o segundointento1.o $(CXXFLAGS)
+
+promAlu.o: promAlu.cpp
+	$(CPP) -c promAlu.cpp -o promAlu.o $(CXXFLAGS)
